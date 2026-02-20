@@ -1,0 +1,39 @@
+{
+  "name": "credchain-backend",
+  "version": "1.0.0",
+  "description": "CredChain backend API server",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "test": "npm run build",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@algorandfoundation/algokit-utils": "^9.0.0",
+    "@prisma/client": "^5.19.0",
+    "algosdk": "^3.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.0",
+    "@pinata/sdk": "^2.0.0",
+    "qrcode": "^1.5.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "@types/qrcode": "^1.5.5",
+    "prisma": "^5.19.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.7.3"
+  }
+}

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cred-primary: #6366f1;
+    --cred-primary-dark: #4f46e5;
+    --cred-accent: #a78bfa;
+    --cred-surface: #f8fafc;
+    --cred-ink: #0f172a;
+    --cred-muted: #64748b;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans text-cred-ink antialiased bg-cred-surface;
+  }
+
+  ::selection {
+    @apply bg-cred-primary/20 text-cred-ink;
+  }
+}
+
+@layer components {
+  .btn-cred {
+    @apply bg-cred-primary hover:bg-cred-primaryDark text-white font-medium rounded-xl px-5 py-2.5
+           transition-all duration-200 active:scale-[0.98] shadow-sm hover:shadow-md;
+  }
+
+  .card-cred {
+    @apply bg-white rounded-2xl shadow-card border border-slate-100/80
+           transition-all duration-300 hover:shadow-card-hover hover:border-slate-200/80;
+  }
+
+  .input-cred {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3
+           text-cred-ink placeholder:text-slate-400
+           focus:outline-none focus:ring-2 focus:ring-cred-primary/30 focus:border-cred-primary
+           transition-all duration-200;
+  }
+}
+
+/* Subtle gradient mesh for hero backgrounds */
+.gradient-mesh {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 40%, #a78bfa 70%, #c4b5fd 100%);
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}

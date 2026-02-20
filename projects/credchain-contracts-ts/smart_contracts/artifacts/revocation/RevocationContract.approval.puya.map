@@ -1,0 +1,835 @@
+{
+  "version": 3,
+  "sources": [
+    "../../revocation/contract.algo.ts"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;AAQA;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;AAAA;AAAA;;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;AAAA;AAQE;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAEqB;AARL;AAAA;AAAA;AAQ4B;AAA1C;AAAA;AAFF;AAAA;AAUA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAEyB;AAlBT;AAAA;AAAA;AAAA;AAkBV;AAAA;;AAAJ;;;AACe;AAAA;AAAA;AAAA;AAHjB;;;AAAA;AAAA;;AAAA;AAAA;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAKS;AALT;;;AAYA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAIyB;AAhCT;AAAA;AAAA;AAAA;AAgCV;AAAA;;AAAJ;;;AAC4C;AAA1C;AAAA;;AAAA;AAAA;AALJ;AAAA",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "@algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 1 8 0"
+    },
+    "6": {
+      "op": "bytecblock \"revoked_\""
+    },
+    "17": {
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "19": {
+      "op": "bz main___algots__.defaultCreate@10",
+      "stack_out": []
+    },
+    "22": {
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "24": {
+      "op": "!",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "25": {
+      "error": "OnCompletion must be NoOp",
+      "op": "assert // OnCompletion must be NoOp",
+      "stack_out": []
+    },
+    "26": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "28": {
+      "op": "assert",
+      "stack_out": []
+    },
+    "29": {
+      "op": "pushbytess 0xc66dee41 0xf193ba7d 0x2d7fe3e7 // method \"revoke(uint64)void\", method \"isRevoked(uint64)bool\", method \"unrevoke(uint64)void\"",
+      "defined_out": [
+        "Method(isRevoked(uint64)bool)",
+        "Method(revoke(uint64)void)",
+        "Method(unrevoke(uint64)void)"
+      ],
+      "stack_out": [
+        "Method(revoke(uint64)void)",
+        "Method(isRevoked(uint64)bool)",
+        "Method(unrevoke(uint64)void)"
+      ]
+    },
+    "46": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(isRevoked(uint64)bool)",
+        "Method(revoke(uint64)void)",
+        "Method(unrevoke(uint64)void)",
+        "tmp%6#0"
+      ],
+      "stack_out": [
+        "Method(revoke(uint64)void)",
+        "Method(isRevoked(uint64)bool)",
+        "Method(unrevoke(uint64)void)",
+        "tmp%6#0"
+      ]
+    },
+    "49": {
+      "op": "match revoke isRevoked unrevoke",
+      "stack_out": []
+    },
+    "57": {
+      "op": "err"
+    },
+    "58": {
+      "block": "main___algots__.defaultCreate@10",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "60": {
+      "op": "!",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "61": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ]
+    },
+    "63": {
+      "op": "!",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0"
+      ]
+    },
+    "64": {
+      "op": "&&",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "tmp%11#0"
+      ]
+    },
+    "65": {
+      "error": "OnCompletion must be NoOp && can only call when creating",
+      "op": "assert // OnCompletion must be NoOp && can only call when creating",
+      "stack_out": []
+    },
+    "66": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "67": {
+      "op": "return",
+      "stack_out": []
+    },
+    "68": {
+      "subroutine": "smart_contracts/revocation/contract.algo.ts::RevocationContract.revoke[routing]",
+      "params": {},
+      "block": "revoke",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "71": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "72": {
+      "op": "len",
+      "defined_out": [
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0"
+      ]
+    },
+    "73": {
+      "op": "intc_1 // 8",
+      "defined_out": [
+        "8",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0",
+        "8"
+      ]
+    },
+    "74": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "75": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "76": {
+      "op": "btoi",
+      "defined_out": [
+        "assetId#0"
+      ],
+      "stack_out": [
+        "assetId#0"
+      ]
+    },
+    "77": {
+      "op": "itob",
+      "defined_out": [
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0"
+      ]
+    },
+    "78": {
+      "op": "bytec_0 // \"revoked_\"",
+      "defined_out": [
+        "\"revoked_\"",
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0",
+        "\"revoked_\""
+      ]
+    },
+    "79": {
+      "op": "swap",
+      "stack_out": [
+        "\"revoked_\"",
+        "encoded_value%0#0"
+      ]
+    },
+    "80": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "81": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1",
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "1"
+      ]
+    },
+    "82": {
+      "op": "itob",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "encoded_value%1#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "encoded_value%1#0"
+      ]
+    },
+    "83": {
+      "op": "box_put",
+      "stack_out": []
+    },
+    "84": {
+      "op": "intc_0 // 1",
+      "stack_out": [
+        "1"
+      ]
+    },
+    "85": {
+      "op": "return",
+      "stack_out": []
+    },
+    "86": {
+      "subroutine": "smart_contracts/revocation/contract.algo.ts::RevocationContract.isRevoked[routing]",
+      "params": {},
+      "block": "isRevoked",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "89": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "90": {
+      "op": "len",
+      "defined_out": [
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0"
+      ]
+    },
+    "91": {
+      "op": "intc_1 // 8",
+      "defined_out": [
+        "8",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0",
+        "8"
+      ]
+    },
+    "92": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "93": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "94": {
+      "op": "btoi",
+      "defined_out": [
+        "assetId#0"
+      ],
+      "stack_out": [
+        "assetId#0"
+      ]
+    },
+    "95": {
+      "op": "itob",
+      "defined_out": [
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0"
+      ]
+    },
+    "96": {
+      "op": "bytec_0 // \"revoked_\"",
+      "defined_out": [
+        "\"revoked_\"",
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0",
+        "\"revoked_\""
+      ]
+    },
+    "97": {
+      "op": "swap",
+      "stack_out": [
+        "\"revoked_\"",
+        "encoded_value%0#0"
+      ]
+    },
+    "98": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "99": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "100": {
+      "op": "box_len",
+      "defined_out": [
+        "_%0#0",
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "_%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "101": {
+      "op": "bury 1",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "103": {
+      "op": "bz isRevoked_after_if_else@3",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "106": {
+      "op": "dup",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "107": {
+      "op": "box_get",
+      "defined_out": [
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0",
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "aggregate%box_get%0#0",
+        "aggregate%box_get%1#0"
+      ]
+    },
+    "108": {
+      "error": "Box must have value",
+      "op": "assert // Box must have value",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "aggregate%box_get%0#0"
+      ]
+    },
+    "109": {
+      "op": "btoi",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%2#0"
+      ]
+    },
+    "110": {
+      "block": "isRevoked_after_inlined_smart_contracts/revocation/contract.algo.ts::RevocationContract.isRevoked@4",
+      "stack_in": [
+        "box_prefixed_key%0#0",
+        "tmp%2#0"
+      ],
+      "op": "pushbytes 0x00",
+      "defined_out": [
+        "0x00"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%2#0",
+        "0x00"
+      ]
+    },
+    "113": {
+      "op": "intc_2 // 0",
+      "defined_out": [
+        "0",
+        "0x00"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%2#0",
+        "0x00",
+        "0"
+      ]
+    },
+    "114": {
+      "op": "uncover 2",
+      "defined_out": [
+        "0",
+        "0x00",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "0x00",
+        "0",
+        "tmp%2#0"
+      ]
+    },
+    "116": {
+      "op": "setbit",
+      "defined_out": [
+        "aggregate%encoded_bool%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "aggregate%encoded_bool%0#0"
+      ]
+    },
+    "117": {
+      "op": "pushbytes 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "aggregate%encoded_bool%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "aggregate%encoded_bool%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "123": {
+      "op": "swap",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "0x151f7c75",
+        "aggregate%encoded_bool%0#0"
+      ]
+    },
+    "124": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%4#0"
+      ]
+    },
+    "125": {
+      "op": "log",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "126": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "1"
+      ]
+    },
+    "127": {
+      "op": "return",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "128": {
+      "block": "isRevoked_after_if_else@3",
+      "stack_in": [
+        "box_prefixed_key%0#0"
+      ],
+      "op": "intc_2 // 0",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "tmp%2#0"
+      ]
+    },
+    "129": {
+      "op": "b isRevoked_after_inlined_smart_contracts/revocation/contract.algo.ts::RevocationContract.isRevoked@4"
+    },
+    "132": {
+      "subroutine": "smart_contracts/revocation/contract.algo.ts::RevocationContract.unrevoke[routing]",
+      "params": {},
+      "block": "unrevoke",
+      "stack_in": [],
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "135": {
+      "op": "dup",
+      "defined_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "tmp%0#0 (copy)"
+      ]
+    },
+    "136": {
+      "op": "len",
+      "defined_out": [
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0"
+      ]
+    },
+    "137": {
+      "op": "intc_1 // 8",
+      "defined_out": [
+        "8",
+        "len%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "len%0#0",
+        "8"
+      ]
+    },
+    "138": {
+      "op": "==",
+      "defined_out": [
+        "eq%0#0",
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0",
+        "eq%0#0"
+      ]
+    },
+    "139": {
+      "error": "invalid number of bytes for arc4.uint64",
+      "op": "assert // invalid number of bytes for arc4.uint64",
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "140": {
+      "op": "btoi",
+      "defined_out": [
+        "assetId#0"
+      ],
+      "stack_out": [
+        "assetId#0"
+      ]
+    },
+    "141": {
+      "op": "itob",
+      "defined_out": [
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0"
+      ]
+    },
+    "142": {
+      "op": "bytec_0 // \"revoked_\"",
+      "defined_out": [
+        "\"revoked_\"",
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0",
+        "\"revoked_\""
+      ]
+    },
+    "143": {
+      "op": "swap",
+      "stack_out": [
+        "\"revoked_\"",
+        "encoded_value%0#0"
+      ]
+    },
+    "144": {
+      "op": "concat",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "145": {
+      "op": "dup",
+      "defined_out": [
+        "box_prefixed_key%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "146": {
+      "op": "box_len",
+      "defined_out": [
+        "_%0#0",
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "_%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "147": {
+      "op": "bury 1",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "149": {
+      "op": "bz unrevoke_after_if_else@3",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "152": {
+      "op": "intc_2 // 0",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "0"
+      ]
+    },
+    "153": {
+      "op": "itob",
+      "defined_out": [
+        "box_prefixed_key%0#0",
+        "encoded_value%2#0"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "encoded_value%2#0"
+      ]
+    },
+    "154": {
+      "op": "dig 1",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "encoded_value%2#0",
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "156": {
+      "op": "swap",
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "box_prefixed_key%0#0",
+        "encoded_value%2#0"
+      ]
+    },
+    "157": {
+      "op": "box_put",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    },
+    "158": {
+      "block": "unrevoke_after_if_else@3",
+      "stack_in": [
+        "box_prefixed_key%0#0"
+      ],
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "box_prefixed_key%0#0",
+        "1"
+      ]
+    },
+    "159": {
+      "op": "return",
+      "stack_out": [
+        "box_prefixed_key%0#0"
+      ]
+    }
+  }
+}

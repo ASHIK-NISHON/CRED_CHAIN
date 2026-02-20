@@ -1,0 +1,56 @@
+// Prisma schema for CredChain database
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Issuer {
+  id        String   @id @default(uuid())
+  address   String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  credentials Credential[]
+}
+
+model Credential {
+  id            String   @id @default(uuid())
+  assetId       String   @unique
+  issuerId      String
+  issuerAddress String
+  studentAddress String
+  studentName   String
+  title         String
+  description   String?
+  issueDate     DateTime
+  expiryDate    DateTime?
+  certificateIpfsHash String
+  metadataIpfsHash    String
+  transactionHash     String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  issuer Issuer @relation(fields: [issuerId], references: [id], onDelete: Cascade)
+  revocations Revocation[]
+}
+
+model Revocation {
+  id            String   @id @default(uuid())
+  credentialId  String
+  assetId       String
+  revokedAt     DateTime @default(now())
+  reason        String?
+  revokedBy     String   // issuer address
+  createdAt     DateTime @default(now())
+
+  credential Credential @relation(fields: [credentialId], references: [id], onDelete: Cascade)
+
+  @@index([assetId])
+  @@index([credentialId])
+}

@@ -1,0 +1,157 @@
+#pragma version 11
+#pragma typetrack false
+
+// @algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram() -> uint64:
+main:
+    intcblock 1 8 0
+    bytecblock "revoked_"
+    // smart_contracts/revocation/contract.algo.ts:9
+    // export class RevocationContract extends Contract {
+    txn NumAppArgs
+    bz main___algots__.defaultCreate@10
+    txn OnCompletion
+    !
+    assert // OnCompletion must be NoOp
+    txn ApplicationID
+    assert
+    pushbytess 0xc66dee41 0xf193ba7d 0x2d7fe3e7 // method "revoke(uint64)void", method "isRevoked(uint64)bool", method "unrevoke(uint64)void"
+    txna ApplicationArgs 0
+    match revoke isRevoked unrevoke
+    err
+
+main___algots__.defaultCreate@10:
+    // smart_contracts/revocation/contract.algo.ts:9
+    // export class RevocationContract extends Contract {
+    txn OnCompletion
+    !
+    txn ApplicationID
+    !
+    &&
+    assert // OnCompletion must be NoOp && can only call when creating
+    intc_0 // 1
+    return
+
+
+// smart_contracts/revocation/contract.algo.ts::RevocationContract.revoke[routing]() -> void:
+revoke:
+    // smart_contracts/revocation/contract.algo.ts:17
+    // public revoke(assetId: uint64): void {
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_1 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/revocation/contract.algo.ts:19
+    // this.revokedAssets(assetId).value = clone(true)
+    itob
+    // smart_contracts/revocation/contract.algo.ts:11
+    // revokedAssets = BoxMap<uint64, boolean>({ keyPrefix: 'revoked_' })
+    bytec_0 // "revoked_"
+    swap
+    concat
+    // smart_contracts/revocation/contract.algo.ts:19
+    // this.revokedAssets(assetId).value = clone(true)
+    intc_0 // 1
+    itob
+    box_put
+    // smart_contracts/revocation/contract.algo.ts:17
+    // public revoke(assetId: uint64): void {
+    intc_0 // 1
+    return
+
+
+// smart_contracts/revocation/contract.algo.ts::RevocationContract.isRevoked[routing]() -> void:
+isRevoked:
+    // smart_contracts/revocation/contract.algo.ts:27
+    // public isRevoked(assetId: uint64): boolean {
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_1 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/revocation/contract.algo.ts:29
+    // if (this.revokedAssets(assetId).exists) {
+    itob
+    // smart_contracts/revocation/contract.algo.ts:11
+    // revokedAssets = BoxMap<uint64, boolean>({ keyPrefix: 'revoked_' })
+    bytec_0 // "revoked_"
+    swap
+    concat
+    dup
+    // smart_contracts/revocation/contract.algo.ts:29
+    // if (this.revokedAssets(assetId).exists) {
+    box_len
+    bury 1
+    bz isRevoked_after_if_else@3
+    // smart_contracts/revocation/contract.algo.ts:30
+    // return clone(this.revokedAssets(assetId).value)
+    dup
+    box_get
+    assert // Box must have value
+    btoi
+
+isRevoked_after_inlined_smart_contracts/revocation/contract.algo.ts::RevocationContract.isRevoked@4:
+    // smart_contracts/revocation/contract.algo.ts:27
+    // public isRevoked(assetId: uint64): boolean {
+    pushbytes 0x00
+    intc_2 // 0
+    uncover 2
+    setbit
+    pushbytes 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+isRevoked_after_if_else@3:
+    // smart_contracts/revocation/contract.algo.ts:32
+    // return false
+    intc_2 // 0
+    // smart_contracts/revocation/contract.algo.ts:27
+    // public isRevoked(assetId: uint64): boolean {
+    b isRevoked_after_inlined_smart_contracts/revocation/contract.algo.ts::RevocationContract.isRevoked@4
+
+
+// smart_contracts/revocation/contract.algo.ts::RevocationContract.unrevoke[routing]() -> void:
+unrevoke:
+    // smart_contracts/revocation/contract.algo.ts:39
+    // public unrevoke(assetId: uint64): void {
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_1 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/revocation/contract.algo.ts:43
+    // if (this.revokedAssets(assetId).exists) {
+    itob
+    // smart_contracts/revocation/contract.algo.ts:11
+    // revokedAssets = BoxMap<uint64, boolean>({ keyPrefix: 'revoked_' })
+    bytec_0 // "revoked_"
+    swap
+    concat
+    dup
+    // smart_contracts/revocation/contract.algo.ts:43
+    // if (this.revokedAssets(assetId).exists) {
+    box_len
+    bury 1
+    bz unrevoke_after_if_else@3
+    // smart_contracts/revocation/contract.algo.ts:44
+    // this.revokedAssets(assetId).value = clone(false)
+    intc_2 // 0
+    itob
+    dig 1
+    swap
+    box_put
+
+unrevoke_after_if_else@3:
+    // smart_contracts/revocation/contract.algo.ts:39
+    // public unrevoke(assetId: uint64): void {
+    intc_0 // 1
+    return
